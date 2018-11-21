@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<head>
+   <title>Universal Actuator</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+      <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+      <script type = "text/javascript"
+         src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>      
+	  <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+
+<!--<body>
+<div style="margin-top:30px" class="container">
+   {% for pin in pins %}
+
+   <h2>{{ pins[pin].name }}
+   {% if pins[pin].state == True %}
+      is currently <strong>on</strong></h2>
+      <div class="row">
+      <div class="col m2">
+      <a href="/{{pin}}/off" class="btn" role="button">Off</a></div></div>
+   {% else %}
+      is currently <strong>off</strong></h2>
+      <div class="row">
+      <div class="col m2">
+      <a href="/{{pin}}/on" class="btn" role="button">On</a></div></div>
+   {% endif %}
+   {% endfor %}
+   <h1> {{ message }} </h1>
+</div>
+</body> -->
+<body class = "container blue-grey lighten-5">
+    <form method="POST">
+	<body class="container">
+          <div class = "card-panel blue lighten-2 z-depth-2 center" style = "font-family: 'Bungee'"><h3>Available Actuators</h3></div>
+	</body>
+	
+	{% for pin in pins %}
+	<body class = "container">       
+          <div class = "card-panel z-depth-3 grey border lighten-4" style = "border-radius: 15px; font-family: 'Ubuntu'">
+            <h3>{{ pins[pin].name }} is Currently
+            {% if pins[pin].state == True %}
+            on
+            </h3>
+            <a href="/{{pin}}/off" role="button" class = "btn white black-text waves-effect waves-red" style="margin-right:10px">Turn Off</a></td>
+            <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple">Press</a></td>
+            
+            {% else %}
+            off
+            </h3>
+            <a href="/{{pin}}/on" role="button" class = "btn white black-text waves-effect waves-green" style="margin-right:10px">Turn On</a></td>
+            <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple">Press</a></td>
+            {% endif %}
+            <div id="div" class="row right">
+                <button name="deleteActuator" value="{{pin}}" class="btn-floating white waves-effect waves-red" ><i style="color:black" class="material-icons right">clear</i></button>  
+            </div>
+          </div>
+        </body>    
+        {% endfor %}
+	
+	<!-- Modal Trigger -->
+	<div id="div" class="row right">
+	    <a class="btn-floating btn-large waves-effect waves-light green modal-trigger"  href="#modal1" ><i class="material-icons right">add</i></a>  
+	</div>
+
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+	    <div class="modal-content">
+		<h4>Add an actuator</h4>
+		<label for="actuatorName" style="font-size:16pt" >Name</label>
+		<input type="text" name="actuatorName" style="font-size:12pt" />
+		<br/>
+		<label for="actuatorPin" style="font-size:16pt" >Connection</label>
+		<input type="text" name="actuatorPin" style="font-size:12pt" />
+		
+                <input checked class="with-gap" id="choice_1" value="switch" name="actuatorType" type="radio"/>   
+                <label for="choice_1">Switch</label>
+
+                <input class="with-gap" id="choice_2" value="button" name="actuatorType" type="radio" />  
+                <label for="choice_2">Button</label>
+	    </div>
+	    <div class="modal-footer">          
+                <button  name="addActuator" class="modal-close waves-effect waves-green btn-flat">Submit</button>	
+	    </div>
+	</div>
+	</form>
+	
+	<!--Form opens from button and needs to ask for name and GPIO pin number -->
+	
+	</body>
+	<script>
+	 $(document).ready(function(){
+	  $('.modal-trigger').leanModal();
+	});
+	</script>
+</html>
+
