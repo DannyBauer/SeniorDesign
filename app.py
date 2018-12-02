@@ -74,7 +74,7 @@ def action(changePin, action):
          
 			pins[changePin]['pwm'].start(7.5) #start at 90 degrees
             
-			pins[changePin]['pwm'].ChangeDutyCycle(9)  # turn towards 180 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(8)  # turn towards 180 degree
             
 			time.sleep(0.5)
             
@@ -89,7 +89,7 @@ def action(changePin, action):
 		if action == "off":
 			pins[changePin]['state'] = False
             
-			pins[changePin]['pwm'].ChangeDutyCycle(6) #turn towards 0 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(7) #turn towards 0 degree
             
 			time.sleep(0.5)
             
@@ -106,7 +106,7 @@ def action(changePin, action):
 			if pinState == True:    
 				pins[changePin]['state'] = False
                 
-				pins[changePin]['pwm'].ChangeDutyCycle(6) #turn towards 0 degree
+				pins[changePin]['pwm'].ChangeDutyCycle(7) #turn towards 0 degree
                 
 				time.sleep(0.5)
                 
@@ -123,7 +123,7 @@ def action(changePin, action):
              
 				pins[changePin]['pwm'].start(7.5) #start at 90 degrees
                 
-				pins[changePin]['pwm'].ChangeDutyCycle(9)  # turn towards 180 degree
+				pins[changePin]['pwm'].ChangeDutyCycle(8)  # turn towards 180 degree
                 
 				time.sleep(0.5)
                 
@@ -209,9 +209,9 @@ def action(changePin, action):
 		if action == "on":
 			pins[changePin]['state'] = True
          
-			pins[changePin]['pwm'].start(2.5) #start at 0 degrees
+			pins[changePin]['pwm'].start(12.5) #start at 0 degrees
             
-			pins[changePin]['pwm'].ChangeDutyCycle(7.5)  # turn towards 90 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(6.3)  # turn towards 90 degree
             
 			time.sleep(0.5)
             
@@ -222,7 +222,7 @@ def action(changePin, action):
 		if action == "off":
 			pins[changePin]['state'] = False
             
-			pins[changePin]['pwm'].ChangeDutyCycle(2.5) #turn towards 0 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(12.5) #turn towards 0 degree
             
 			time.sleep(0.5)
             
@@ -231,13 +231,13 @@ def action(changePin, action):
 			message = "Turned " + deviceName + " off."
 
 		if action == "press": 
-			pins[changePin]['pwm'].start(2.5)
+			pins[changePin]['pwm'].start(12.5)
             
-			pins[changePin]['pwm'].ChangeDutyCycle(7.5)  # turn towards 90 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(6.3)  # turn towards 90 degree
 
 			time.sleep(0.5) # sleep 1 second
             
-			pins[changePin]['pwm'].ChangeDutyCycle(2.5) # turn back to 0 degree
+			pins[changePin]['pwm'].ChangeDutyCycle(12.5) # turn back to 0 degree
             
 			time.sleep(0.5)
             

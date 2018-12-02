@@ -65,7 +65,7 @@
 	  </style>
 </head>
 
-<body class = "container blue-grey lighten-5">
+<body class = "container" bgcolor="#E9EBF3">
     <form method="POST">
 	<body class="container">
           <div class = "card-panel blue lighten-4 z-depth-2 center" style = "font-family: 'Poppins'; font-size: 28pt">Available Actuators</div>
@@ -73,24 +73,24 @@
 	
 	{% for pin in pins %}
 	<body class = "container">       
-          <div class = "card-panel z-depth-3 grey border lighten-4" style = "border-radius: 15px; font-family: 'Quicksand'">
+          <div class = "card-panel z-depth-3" style = "border-radius: 15px; font-family: 'Quicksand'">
             <div style="font-size:22pt; margin-bottom:10px" >{{ pins[pin].name }} is Currently
             {% if pins[pin].state == True %}
-            on
+            <span style="color: green">on</span>
             </div>
-            <a href="/{{pin}}/off" role="button" class = "btn white black-text waves-effect waves-red" style="margin-right:10px">Turn Off</a></td>
+            <a href="/{{pin}}/off" role="button" class = "btn white black-text waves-effect waves-red" style="margin-right:10px; border-radius:10px">Turn Off</a></td>
             
             {% if pins[pin].pinType == "button" %}
-                <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple">Press</a></td>
+                <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple" style="border-radius:10px">Press</a></td>
             {% endif %}
             
             {% else %}
-            off
+            <span style="color: red">off</span>
             </div>
-            <a href="/{{pin}}/on" role="button" class = "btn white black-text waves-effect waves-green" style="margin-right:10px">Turn On</a></td>
+            <a href="/{{pin}}/on" role="button" class = "btn white black-text waves-effect waves-green" style="margin-right:10px; border-radius:10px">Turn On</a></td>
             
             {% if pins[pin].pinType == "button" %}
-                <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple">Press</a></td>
+                <a href="/{{pin}}/press" role="button" class = "btn white black-text waves-effect waves-purple" style="border-radius:10px">Press</a></td>
             {% endif %}
             
             {% endif %}
